@@ -59,18 +59,18 @@ class CPFValidator
 	private function checkAlgorithm ()
 	{
 		for ($t = 9; $t < 11; $t++) {
-	        for ($d = 0, $c = 0; $c < $t; $c++) {
-	            $d += $this->cpf{$c} * (($t + 1) - $c);
-	        }
+			for ($d = 0, $c = 0; $c < $t; $c++) {
+				$d += $this->cpf{$c} * (($t + 1) - $c);
+			}
 
-	        $d = ((10 * $d) % 11) % 10;
+			$d = ((10 * $d) % 11) % 10;
 
-	        if ($this->cpf{$c} != $d) {
-	            return false;
-	        }
-	    }
+			if ($this->cpf{$c} != $d) {
+				return false;
+			}
+		}
 
-	    return true;
+		return true;
 	}
 
 	/**
@@ -95,10 +95,10 @@ class CPFValidator
 	private function checkSequence ()
 	{
 		if (preg_match('/(\d)\1{10}/', $this->cpf)) {
-	        return true;
-	    }
+			return true;
+		}
 
-	    return false;
+		return false;
 	}
 
 	/**
